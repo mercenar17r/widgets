@@ -3,10 +3,14 @@ import axios from "axios";
 
 const Search = () => {
   const [term, setTerm] = useState("");
-  console.log("i run with every render");
+
   useEffect(() => {
-    console.log("I run after every render and at initial render");
-  });
+    const search = async () => {
+      await axios.get("https://en.wikipedia.org/w/api.php");
+    };
+
+    search();
+  }, [term]);
   return (
     <div>
       <div className="ui form">
