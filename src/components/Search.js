@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Search = () => {
-  const [term, setTerm] = useState("");
+  const [term, setTerm] = useState("programming");
   const [results, setResults] = useState([]);
-  console.log(results);
 
   useEffect(() => {
     const search = async () => {
@@ -17,9 +16,8 @@ const Search = () => {
           srsearch: term,
         },
       });
-      setResults(data);
+      setResults(data.query.search);
     };
-
     search();
   }, [term]);
   return (
