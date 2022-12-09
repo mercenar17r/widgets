@@ -3,18 +3,20 @@ import React, { useState, useEffect, useRef } from "react";
 const Dropdown = ({ options, selected, onSelectedChange }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef();
+
   useEffect(() => {
-    useEffect(() => {
-      document.body.addEventListener(
-        "click",
-        (event) => {
-          console.log(event.target);
-          setOpen(false);
-        },
-        { capture: true }
-      );
-    }, []);
+    document.body.addEventListener(
+      "click",
+      (event) => {
+        if (ref.current.contains(event.target)) {
+          return;
+        }
+        setOpen(false);
+      },
+      { capture: true }
+    );
   }, []);
+
   const renderedOptions = options.map((option) => {
     if (option.value === selected.value) {
       return null;
