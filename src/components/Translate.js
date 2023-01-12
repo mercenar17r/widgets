@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+import Dropdown from "./Dropdown";
+
+const options = [
+  {
+    label: "Africans",
+    value: "af",
+  },
+  {
+    label: "Arabic",
+    value: "ar",
+  },
+  {
+    label: "Hindi",
+    value: "hi",
+  },
+];
 
 const Translate = () => {
-  return <div>Translate</div>;
+  return (
+    <div>
+      <Dropdown options={options} />
+    </div>
+  );
 };
 
 export default Translate;
