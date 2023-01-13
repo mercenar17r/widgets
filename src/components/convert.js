@@ -3,6 +3,16 @@ import axios from "axios";
 
 const convert = ({ language, text }) => {
   const [translated, setTranslated] = useState("");
+  const [debouncedText, setDebouncedText] = useState(text);
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedText(text);
+    }, 500);
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [text]);
   useEffect(() => {
     const doTranslation = async () => {
       const { data } = await axios.post(
