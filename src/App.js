@@ -58,5 +58,12 @@ const showTranslate = () => {
 };
 
 export default () => {
-  return <div>{Accordion()}</div>;
+  return (
+    <div>
+      {showAccordion()}
+      {showList()}
+      {showDropdown()}
+      {showTranslate()}
+    </div>
+  );
 };
